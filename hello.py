@@ -17,8 +17,8 @@ class A:
         print(cls.b)
     
     @classmethod
-    def factorymethod(cls):
-        return cls('lol')
+    def factorymethod(cls, value):
+        return cls(value)
 
     @staticmethod
     def testmethod2():
@@ -26,6 +26,10 @@ class A:
         print(b)
         b = 'changed in static'
         print(b)
+    
+    @staticmethod
+    def stringmodifier(val):
+        return val+val
 
 
 # driver code
@@ -38,6 +42,7 @@ obj.b = 'changed using object' # this changes the values of b but only for the o
 print(A.b) # print 'changes directly' as it was the last value assigned using the class
 obj2 = A.factorymethod('nothing') # creates a class object using the factory method similar to constructor
 
+A.stringmodifier('hello') # prints 'hellohello'
 A.testmethod2() # error as b is not accessible inside the static method
 
 
